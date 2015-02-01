@@ -5,6 +5,8 @@ package screens {
 
 import com.greensock.TweenLite;
 
+import events.NavigationEvent;
+
 import flash.geom.Point;
 
 import objects.Circle;
@@ -21,6 +23,8 @@ import starling.events.TouchPhase;
 import com.greensock.TweenMax;
 import com.greensock.easing.*;
 
+import starling.text.TextField;
+
 public class InGame extends Sprite{
 
     private var circle:Circle;
@@ -28,9 +32,9 @@ public class InGame extends Sprite{
     private var circlesArray:Vector.<Circle>;
     private var circlesTotalCount:int;
     private var currentHitCount:int;
-
     private var score:int;
     private var circlesSpeed:int;
+    private var scoreText:TextField;
 
     public function InGame() {
         super();
@@ -40,6 +44,11 @@ public class InGame extends Sprite{
     private function onAddedToStage(event:Event):void{
         this.removeEventListener(Event.ADDED_TO_STAGE, onAddedToStage);
         drawGame();
+
+        scoreText = new TextField(100, 50, "Score: 0", "MyFontName", 18, 0x673500);
+        scoreText.x = 380;
+        scoreText.y = 0;
+        this.addChild(scoreText);
     }
 
     private function drawGame():void{
@@ -57,10 +66,10 @@ public class InGame extends Sprite{
     }
 
     private function generateCircles(circlesTotalCount:int):void {
-        trace("into generateCircles");
         trace(circlesTotalCount);
         for(var i:uint = 0; i<circlesTotalCount;i++){
-            var newCircle:Circle = new Circle(1,1);
+            var circleType = Math.floor(Math.random() * (4 - 1 + 1)) + 1;
+            var newCircle:Circle = new Circle(circleType,1);
             newCircle.x = (i*20)+50;
             circlesArray.push(newCircle);
 
@@ -96,6 +105,7 @@ public class InGame extends Sprite{
                     trace("Object Clicked! at position: " + localPos);
                     currentCircle.alreadyHit = true;
                     score += 10;
+                    scoreText.text = "Score: " + score;
                     currentHitCount++;
                     circlesArray.splice(i, 1);
 

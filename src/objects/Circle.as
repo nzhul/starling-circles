@@ -80,8 +80,7 @@ public class Circle extends Sprite{
 
     private function createCircleArt():void{
 
-        this.circleImage = new Image(Assets.getTexture("Circle"));
-
+        this.circleImage = new Image(Assets.getTexture("Circle"+this.type));
         this.circleImage.x = Math.ceil(-this.circleImage.width/2);
         this.circleImage.y = Math.ceil(-this.circleImage.height/2);
         this.addChild(this.circleImage);
@@ -142,6 +141,14 @@ public class Circle extends Sprite{
 
     public function set duration(value:int):void {
         _duration = value;
+    }
+
+    public function get type():int {
+        return _type;
+    }
+
+    public function set type(value:int):void {
+        _type = value;
     }
 }
 }

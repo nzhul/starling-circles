@@ -3,7 +3,6 @@ package
 import events.NavigationEvent;
 
 import screens.InGame;
-
 import screens.Welcome;
 
 import starling.display.Quad;

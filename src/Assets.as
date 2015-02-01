@@ -11,6 +11,18 @@ public class Assets {
         [Embed(source="../media/graphics/circle.png")]
         public static const Circle:Class;
 
+        [Embed(source="../media/graphics/circle1.png")]
+        public static const Circle1:Class;
+
+        [Embed(source="../media/graphics/circle2.png")]
+        public static const Circle2:Class;
+
+        [Embed(source="../media/graphics/circle3.png")]
+        public static const Circle3:Class;
+
+        [Embed(source="../media/graphics/circle4.png")]
+        public static const Circle4:Class;
+
         [Embed(source="../media/graphics/bgwallpaper.jpg")]
         public static const BGWallpaper:Class;
 
@@ -19,6 +31,9 @@ public class Assets {
 
         [Embed(source="../media/graphics/gameLogo.png")]
         public static const GameTitle:Class;
+
+        [Embed(source="../media/fonts/embedded/BuxtonSketch.ttf", fontFamily="MyFontName", embedAsCFF="false")]
+        public static var MyFont:Class;
 
         private static var gameTextures:Dictionary = new Dictionary();
 
